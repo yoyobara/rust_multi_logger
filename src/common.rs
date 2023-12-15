@@ -5,11 +5,11 @@
 /*
  * socket related functions
  */
-mod sock {
+pub mod sock {
     use std::{net::TcpStream, io::{Write, Read}};
 
 
-    trait Protocol {
+    pub trait Protocol {
 
         // sends a message
         fn send_message(&mut self, kind: u8, data: &[u8]);
