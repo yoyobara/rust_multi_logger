@@ -46,7 +46,7 @@ pub mod sock {
             let length = u32::from_be_bytes(length_buffer);
 
             // recieve actual data
-            let mut data_buffer: Vec<u8> = Vec::with_capacity(length as usize);
+            let mut data_buffer: Vec<u8> = vec![0; length as usize];
             self.read_exact(&mut data_buffer).unwrap();
 
             (kind, data_buffer)

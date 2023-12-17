@@ -10,7 +10,16 @@ struct Client {
 /*
  * a handler for a client using TcpStream
  */
-fn handle_client<T: Write + Send>(mut client: Client, output_stream: Arc<Mutex<T>>) {
+fn handle_client<T: Write + Send>(client: Client, output_stream: Arc<Mutex<T>>) {
+    println!("{}", client.name);
+    log(output_stream, &format!("A client named \"{}\" has joined!", client.name));
+}
+
+fn log<T:Write + Send>(output_stream: Arc<Mutex<T>>, data: &str) {
+    let mut output_acquired = output_stream.lock().unwrap();
+    output_acquired.write_all(data.as_bytes()).unwrap();
+    output_acquired.write_all(b"\n").unwrap();
+    output_acquired.flush().unwrap();
 }
 
 /*
