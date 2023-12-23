@@ -8,6 +8,11 @@
 pub mod sock {
     use std::{net::TcpStream, io::{Write, Read}};
 
+    pub const MSG_JOIN: u8 = 0x6A;
+    pub const MSG_LEAVE: u8 = 0x65;
+    pub const MSG_JOIN_OK: u8 = 0x4A;
+    pub const MSG_LOG: u8 = 0x6C;
+
 
     pub trait Protocol {
 

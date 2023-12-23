@@ -17,6 +17,10 @@ as the client connects to the server, the server shall expect this message, cont
 
     `<utf8-encoded name of the player joining>`
 
+### LEAVE (0x65)
+leaves the server. called when dropping the client resource.
+no content.
+
 ### LOG (0x6C)
 logs a message to the server
 
